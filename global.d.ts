@@ -1,3 +1,8 @@
+type TSession = {
+  sessionUuid: string;
+  apiVersion: number;
+};
+
 type TMessageAttachment = {
   uuid: string;
   type: "image";

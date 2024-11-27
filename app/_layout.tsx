@@ -1,5 +1,6 @@
+import { SharedRoot } from "@/src/components/Shared/SharedRoot";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React from "react";
 import { useEffect } from "react";
@@ -11,6 +12,9 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    NunitoRegular: require("../assets/fonts/Nunito-Regular.ttf"),
+    NunitoItalic: require("../assets/fonts/Nunito-Italic.ttf"),
+    NunitoSemiBold: require("../assets/fonts/Nunito-SemiBold.ttf"),
   });
 
   useEffect(() => {
@@ -20,14 +24,8 @@ export default function RootLayout() {
   }, [error, loaded]);
 
   return (
-    <>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="chats" />
-      </Stack>
-    </>
+    <SharedRoot>
+      <Slot />
+    </SharedRoot>
   );
 }
