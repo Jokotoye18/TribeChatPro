@@ -14,13 +14,16 @@ export const useSendMessageMutation = ({
       axiosInstance.post(`${routes.sendMessage}`, payload).then((res) => {
         return res.data;
       }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: [queryKeys.messages, filter, extra],
-      });
-    },
-    onError: (error) => {
-      console.log(error);
+    onSuccess: async () => {
+      await Promise.all([
+        queryClient.invalidateQueries({
+          queryKey: [queryKeys.messages, filter, extra],
+        }),
+
+        queryClient.invalidateQueries({
+          queryKey: [queryKeys.participants, filter, extra],
+        }),
+      ]);
     },
   });
 };
