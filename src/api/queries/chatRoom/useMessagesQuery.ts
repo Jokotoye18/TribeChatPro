@@ -12,7 +12,7 @@ export const useMessagesQuery = ({
   filter = "all",
   extra,
 }: TUseMessagesQuery) => {
-  return useQuery<TMessageJSON[], unknown>({
+  return useQuery<TMessage[], unknown>({
     queryKey: [queryKeys.messages, filter, extra],
     queryFn: () =>
       axiosInstance

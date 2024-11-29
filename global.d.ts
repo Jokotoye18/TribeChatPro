@@ -42,3 +42,13 @@ type TMessage = {
 type TMessageJSON = Omit<TMessage, "replyToMessageUuid"> & {
   replyToMessage?: Omit<TMessage, "replyToMessageUuid">;
 };
+
+type TConsecutiveMessage = {
+  authorUuid: string;
+  messages: TMessageJSON[];
+};
+
+type TDateGroupMessage = {
+  date: string;
+  messages: TConsecutiveMessage[];
+};
