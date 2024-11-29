@@ -3,8 +3,10 @@ import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import React from "react";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { useEffect } from "react";
 import "react-native-reanimated";
+import { StatusBar } from "expo-status-bar";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -25,7 +27,10 @@ export default function RootLayout() {
 
   return (
     <SharedRoot>
-      <Slot />
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <StatusBar style="dark" />
+        <Slot />
+      </GestureHandlerRootView>
     </SharedRoot>
   );
 }
