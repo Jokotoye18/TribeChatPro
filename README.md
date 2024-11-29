@@ -1,50 +1,53 @@
-# Welcome to your Expo app 👋
+# Tribe Chat
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Overview
 
-## Get started
+**Tribe Chat** is a cross-platform single-room chat application built with React Native and Expo. The app demonstrates a robust chat experience, including grouped messages, reactions, quoted replies, and offline support.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## ScreenShots
 
-2. Start the app
+[Watch the Demo Video](https://drive.google.com/file/d/1fnW505nl1JDa-rsBOOYFE8iRNuW8tjCS/view?usp=sharing)
 
-   ```bash
-    npx expo start
-   ```
+## ![Tribe Chat App Screenshot](./assets/images/simulator-screenshot.png "CTribe Chat App Main Screen")
 
-In the output, you'll find options to open the app in a
+## Features
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### ✅ **Required Features**
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **Message List**:
+  - Displays all chat messages with:
+    - Participant's **avatar** and **name**.
+    - **Timestamp** showing when the message was sent.
+    - **Edited** indicator for modified messages.
+    - Row of **reactions** below messages with reactions.
+  - **Image attachments** are displayed in messages.
+  - Consecutive messages from the same participant are **grouped together**.
+- **Message Input**:
+  - Input bar at the bottom for **sending new messages**. Sending the message make a request and update the message list
 
-## Get a fresh project
+---
 
-When you're ready, run:
+### ⭐ **Good-to-Have Features**
 
-```bash
-npm run reset-project
-```
+In addition to the required features, the app implements the following enhancements:
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- **Quoted Replies**:
+  - Messages sent as replies display the original message context.
+- **Efficient API Usage**:
+  - Uses API endpoints to hydrate the app on launch and sync updates efficiently
+- **Lazy Loading**:
+  - Implements infinite scroll for loading older messages. [FlashList was utilized ](https://shopify.github.io/flash-list/docs/)
+- **Offline Support**:
+  - Fetched data is stored locally for offline access using [Zustand persist](https://zustand.docs.pmnd.rs/integrations/persisting-store-data) and [Async-storage](https://www.npmjs.com/package/@react-native-async-storage/async-storage) .
+- **Performance Optimizations**:
+  - Minimizes unnecessary re-renders to ensure a smooth user experience.
+- **Reactions**:
+  - Clicking on reactions shows a bottom sheet with details (emoji + participant names).
+- **Participant Details**:
+  - Clicking on a participant’s name or avatar opens a bottom sheet with their information.
+- **Image Preview**:
+  - Clicking on a message’s image opens a modal with an image preview.
+- **@Mentions**:
+  - Supports mentioning participants in messages.
