@@ -26,6 +26,7 @@ const MessageHeader = ({
       <View style={[{ alignSelf: "flex-start" }]}>
         <Text
           style={[styles.name, { color: isCurrentUser ? "white" : "black" }]}
+          onPress={() => handleSetParticipant(participant)}
         >
           {participant.name}
         </Text>
